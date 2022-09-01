@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <title>Curso de Manejo de Datos en PHP</title>
+</head>
+
+<body>
+    <header class="text-center">
+        <h1>Curso de Manejo de Datos en PHP</h1>
+    </header>
+    <main class="container">
+        <hr>
+
+        <section class="row">
+            <article class="col">
+                <h2>Sección 1 de 16 - Qué aprenderás sobre el manejo de datos en PHP</h2>
+
+            </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 2 de 16 - Comillas</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                echo 'Con comillas simples puedes utilizar una linea
+                    o también mas de una linea,
+                    escapo comilla simple \' y backslash \\ con el backslash \\
+                    las variables se toman como texto, no nos muestran su valor $numero1
+                ';
+                
+                echo "&ltbr>";
+                
+                $nombre = "Alexander";
+                
+                echo "mi nombre es $nombre y con comillas dobles pude imprimir mi variable nombre";
+                
+                echo "&ltbr>";
+                
+                $courses = [
+                    'backend' => [
+                        'PHP',
+                        'Laravel'
+                    ]
+                ];
+                
+                echo "imprimir variables complejas osea mas de un nivel en un array por ejemplo utilizar llaves {} {$courses['backend'][0]}";
+                
+                echo "&ltbr>";
+                
+                class User {
+                    public $name = 'Alexander';
+                }
+                
+                $user = new User;
+                
+                echo "$user->name Quiere aprender php (ejemplo imprimiendo una variable de acceso simple como la propiedad de un objeto solo se usa ->, si tiene mas niveles utilizar llaves {})";
+                
+                $array_courses = [
+                    'backend' => 'PHP'
+                ];
+                
+                echo "&ltbr>";
+                
+                echo "imprimiendo un array con clave especifica {$array_courses['backend']}, tambien tenemos que usar llaves {}";
+                
+                
+                echo "&lthr>";
+                echo "&lthr>";
+                echo "Entendiendo variables variables &ltbr>";
+                
+                $teacher = 'italo';
+                $italo = 'Profesor de PHP';
+                
+                echo "$teacher es ${$teacher}";
+                echo "&ltbr>";
+                function getTeacher() {
+                    return 'teacher';
+                }
+                
+                echo "{${getTeacher()}} enseña PHP";
+                
+                
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 3 de 16 - Extracción de datos</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $data = 'Estudio PHP';
+                // echo $data{0};
+                echo $data[0];
+                
+                echo "&ltbr>";
+                
+                $post = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique culpa, ex odio doloremque quas enim nisi ullam incidunt harum porro optio repellendus beatae ab modi earum dolorum dicta? Nesciunt, consequatur.";
+                $extract = substr($post, 0, 20);
+                
+                echo "$extract... [ver más]";
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                $data = "javascript, php, laravel";
+                echo $data;
+                echo "&ltbr>";
+                $tags = explode(", ", $data);
+                echo "&ltpre>";
+                var_dump($tags);
+                echo "&lt/pre>";
+                
+                $courses = ['javascript', 'php', 'laravel'];
+                echo implode(", ", $courses);
+                
+                echo "&ltbr>";
+                $course = "       Curso practico de PHP    ";
+                // $course = trim($course);
+                // $course = ltrim($course);
+                $course = rtrim($course);
+                echo "&ltpre>";
+                echo "Quiero aprender mucho en el $course que está en platzi";
+                echo "&lt/pre>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 4 de 16 - Formato de datos</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $text = "PHP es un LEnguaje";
+                echo strtolower($text);
+                echo "&ltbr>";
+                echo strtoupper($text);
+                echo "&ltbr>";
+                echo ucfirst($text);
+                echo "&ltbr>";
+                echo lcfirst($text);
+                echo "&ltbr>";
+                
+                $slug = str_replace(' ', '-', $text);
+                echo strtolower($slug);
+                echo "&ltbr>";
+                
+                $code = 39;
+                echo str_pad($code, 8, "#");
+                echo "&ltbr>";
+                echo str_pad($code, 8, "#", STR_PAD_BOTH);
+                echo "&ltbr>";
+                echo str_pad($code, 8, "#", STR_PAD_LEFT);
+                echo "&ltbr>";
+                
+                $text = "&lth1>PHP es un lenguaje&lt/h1>";
+                echo $text;
+                echo "&ltbr>";
+                $text = "&lth1>PHP es un lenguaje&lt/h1>";
+                echo strip_tags($text);
+                echo "&ltbr>";
+                
+                $text = "En este año quiero aprender programación";
+                echo strtoupper($text);
+                echo "&ltbr>";
+                
+                echo mb_strtoupper($text);
+                echo "&ltbr>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 5 de 16 - Expresiones Regulares</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $password = '123456';
+                $password = '123456a';
+                $password = '1234567890';
+                
+                echo preg_match('/^[0-9]{6,9}$/', $password);
+                echo "&ltbr>";
+                
+                echo var_dump(preg_match('/^[0-9]{6,9}$/', $password));
+                echo "&ltbr>";
+                
+                echo var_dump((bool) preg_match('/^[0-9]{6,9}$/', $password));
+                echo "&ltbr>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 6 de 16 - Iniciando nuestro proyecto</h2>
+            <pre class="prettyprint">
+                    
+                > composer require --dev phpunit/phpunit
+            </pre>
+            <p>Edito el composer.json</p>
+            <pre class="prettyprint">
+                    
+                {
+                    "name": "aliensanderdiaz/validate",
+                    "description": "Proyecto de Validación",
+                    "autoload": {
+                        "psr-4": {
+                            "App\\": "src/"
+                        }
+                    },
+                    "require-dev": {
+                        "phpunit/phpunit": "^9.5"
+                    }
+                }
+                
+            </pre>
+            <p>Ejecuto</p>
+            <pre class="prettyprint">
+                    
+                > composer dump
+            </pre>
+            <p>Creo archivo phpunit.xml</p>
+            <pre class="prettyprint">
+                    
+                &lt?xml version="1.0" encoding="UTF-8"?>
+                &ltphpunit bootstrap="vendor/autoload.php" colors="true">
+                    &lttestsuite name="Text directory">
+                        &ltdirectory>tests&lt/directory>
+                    &lt/testsuite>
+                &lt/phpunit>
+            </pre>
+            <p>Ejecuto para hacer los tests... Aún no hay</p>
+            <pre class="prettyprint">
+                    
+                > vendor/phpunit/phpunit/phpunit // En windows iniciar con php 
+            </pre>
+
+            <p>/tests/ValidateTest.php</p>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                use PHPUnit\Framework\TestCase;
+                use App\Validate;
+                
+                class ValidateTest extends TestCase
+                {
+                    public function test_email()
+                    {
+                        $email = Validate::email('i@rimorsoft.com');
+                        $this->assertTrue($email);
+                        
+                        $email = Validate::email('i@@rimorsoft.com');
+                        $this->assertFalse($email);
+                    }
+                }
+            </pre>
+            <p>/src/Validate.php</p>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                namespace App;
+                
+                class Validate
+                {
+                    public static function email($value)
+                    {
+                        return (bool) filter_var($value, FILTER_VALIDATE_EMAIL);
+                    }
+                }
+            </pre>
+            <p>Ejecuto para hacer los tests... Ya hay</p>
+            <pre class="prettyprint">
+                    
+                > vendor/phpunit/phpunit/phpunit // En windows iniciar con php 
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 7 de 16 - Revisando nuestro proyecto</h2>
+            <p>Agregamos mas tests, uno de url y otro de contraseña (expresion regular)</p>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                require __DIR__ . '/vendor/autoload.php';
+                
+                var_dump(App\Validate::email('i@rimorsoft.com'));
+                echo "&ltbr>";
+                var_dump(App\Validate::email('i@@rimorsoft.com'));
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump(App\Validate::url('https://www.youtube.com/'));
+                echo "&ltbr>";
+                var_dump(App\Validate::url('youtube.com'));
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump(App\Validate::password('123456'));
+                echo "&ltbr>";
+                var_dump(App\Validate::password('1234567890'));
+            </pre>
+
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                namespace App;
+                
+                class Validate
+                {
+                    public static function email($value)
+                    {
+                        return (bool) filter_var($value, FILTER_VALIDATE_EMAIL);
+                    }
+                
+                
+                    public static function url($value)
+                    {
+                        return (bool) filter_var($value, FILTER_VALIDATE_URL);
+                    }
+                
+                
+                    public static function password($value)
+                    {
+                        return (bool) preg_match('/^[0-9]{6,9}$/', $value);
+                    }
+                }
+            </pre>
+
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                use PHPUnit\Framework\TestCase;
+                use App\Validate;
+                
+                class ValidateTest extends TestCase
+                {
+                    public function test_email()
+                    {
+                        $email = Validate::email('i@rimorsoft.com');
+                        $this->assertTrue($email);
+                
+                        $email = Validate::email('i@@rimorsoft.com');
+                        $this->assertFalse($email);
+                    }
+                
+                
+                    public function test_url()
+                    {
+                        $url = Validate::url('https://platzi.com/');
+                        $this->assertTrue($url);
+                
+                        $url = Validate::url('platzi.com/');
+                        $this->assertFalse($url);
+                    }
+                
+                
+                    public function test_password()
+                    {
+                        $password = Validate::password('123456');
+                        $this->assertTrue($password);
+                
+                        $password = Validate::password('1234567890');
+                        $this->assertFalse($password);
+                    }
+                }
+                
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 8 de 16 - Argumentos</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                function greet($name)
+                {
+                    return "Hola, $name";
+                }
+                
+                echo greet('Alex');
+                echo "&ltbr>";
+                
+                echo "&ltbr>";
+                echo "&ltbr>";
+                echo "REFERENCIA, cuando al argumento se le pasa la variable pero con el signo &";
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                $course = 'PHP';
+                
+                function path(&$course)
+                {
+                    echo $course;
+                    echo "&ltbr>";
+                    $course = 'Laravel';
+                    echo $course;
+                }
+                echo "&ltbr>";
+                path($course);
+                echo "&ltbr>";
+                echo $course;
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                
+                function greet2($name = 'Juliana')
+                {
+                    return "Hola, $name";
+                }
+                
+                echo greet2();
+                echo "&ltbr>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 9 de 16 - Return</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                function greet()
+                {
+                    return "Hola...";
+                }
+                
+                greet();
+                echo greet();
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 10 de 16 - Closure</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $greet = function ($name) {
+                    return "Hola, $name";
+                };
+                
+                echo $greet('Alexanmder');
+                echo "&ltbr>";
+                
+                function greet2(Closure $lang, $name) {
+                    return $lang($name);
+                }
+                
+                $es = function ($name) {
+                    return "Hola, $name";
+                };
+                
+                $en = function ($name) {
+                    return "Hello, $name";
+                };
+                
+                echo greet2($en, 'Lynda');
+                echo "&ltbr>";
+                echo greet2($es, 'Alex');
+                echo "&ltbr>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 11 de 16 - Array simple</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+                $courses = ['javascript', 'laravel', 'php', 'vuejs'];
+                
+                echo "&ltpre>";
+                var_dump($courses);
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 12 de 16 - Array complejo</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+                $courses = [
+                    'frontend' => 'javascript',
+                    'framework' => 'laravel',
+                    'backend' => 'php'
+                ];
+                
+                echo "&ltpre>";
+                var_dump($courses);
+                
+                foreach ($courses as $key => $value) {
+                    echo "$key: $value &ltbr>";
+                }
+                
+                
+                foreach ($courses as $course) {
+                    echo "$course &ltbr>";
+                }
+                
+                function upper($course) {
+                    echo strtoupper($course) . "&ltbr>";
+                }
+                
+                array_walk($courses, 'upper');
+                
+                function upper2($course, $key) {
+                    echo strtoupper($course) . ": $key&ltbr>";
+                }
+                
+                array_walk($courses, 'upper2');
+                
+                echo "&ltpre>";
+                echo "
+                /**
+                 * array_key_exists
+                 * in_array
+                 * array_keys
+                 * array_values
+                 */";
+            </pre>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 13 de 16 - Funciones PHP para arrays</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+                $courses = ['javascript', 'c', 'laravel', 'php', 'vuejs'];
+                sort($courses);
+                
+                echo "&ltpre>";
+                var_dump($courses);
+                
+                rsort($courses);
+                
+                echo "&ltpre>";
+                var_dump($courses);
+                
+                $courses = [
+                    100=> 'javascript',
+                    10 => 'c',
+                    1 => 'laravel',
+                    10000 => 'php',
+                    1000 => 'vuejs'
+                ];
+                ksort($courses);
+                
+                echo "&ltpre>";
+                var_dump($courses);
+                krsort($courses);
+                
+                echo "&ltpre>";
+                var_dump($courses);
+                
+                var_dump(array_slice($courses, 1));
+                var_dump(array_chunk($courses, 2));
+                
+                echo "&ltpre>";
+                echo "
+                /**
+                 * array_shift
+                 * array_pop
+                 * array_unshift
+                 * array_push
+                 * array_flip
+                 */";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 14 de 16 - Comparación</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+                $courses = ['javascript', 'php'];
+                $wishes = ['javascript', 'laravel', 'php', 'vuejs'];
+                sort($courses);
+                
+                echo "&ltpre>";
+                var_dump(array_diff( $courses, $wishes));
+                echo "&ltpre>";
+                var_dump(array_diff( $wishes, $courses));
+                
+                echo "#array_diff_assoc";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 15 de 16 - union</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+                $courses = ['javascript', 'php'];
+                $wishes = ['laravel', 'vuejs'];
+                
+                echo "&ltpre>";
+                var_dump(array_merge($courses, $wishes));
+                
+                $courses = ['a'=>'javascript', 'b'=>'php'];
+                $wishes = ['a' => 'laravel', 'c' => 'vuejs'];
+                var_dump(array_merge_recursive($courses, $wishes));
+                
+                
+                $courses = ['javascript', 'php'];
+                $wishes = ['laravel', 'vuejs'];
+                
+                echo "&ltpre>";
+                var_dump(array_combine($courses, $wishes));
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 16 de 16 - Resumen final</h2>
+            
+          </article>
+        </section>
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
